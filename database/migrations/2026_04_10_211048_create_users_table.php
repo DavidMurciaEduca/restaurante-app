@@ -1,32 +1,21 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace Database\Seeders;
 
-return new class extends Migration
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class DatabaseSeeder extends Seeder
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function run(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('tipo_usuario', ['camarero', 'cocina', 'gerente']);
-            $table->boolean('activo')->default(true);
-            $table->timestamps();
-        });
+        User::create([
+            'nombre' => 'Administrador',
+            'email' => 'admin@restaurante.com',
+            'password' => Hash::make('password'),
+            'tipo_usuario' => 'gerente',
+            'activo' => true,
+        ]);
     }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('users');
-    }
-};
+}
