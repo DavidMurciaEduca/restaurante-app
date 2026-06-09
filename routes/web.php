@@ -10,7 +10,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ZonaController;
-use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | ROOT REDIRECT
@@ -87,7 +87,7 @@ Route::middleware(['auth', 'admin.gerente'])->group(function () {
     Route::resource('categorias', CategoriaController::class);
 
     Route::resource('zonas', ZonaController::class);
-    Route::get('/dashboard', [DashbordController::class, 'index'])
+    Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 });

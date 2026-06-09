@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\PedidoItem;
 
-class dashbordController extends Controller
+class DashboardController extends Controller
 {
     public function index(Request $request)
 {
